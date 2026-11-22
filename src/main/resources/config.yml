@@ -1,0 +1,47 @@
+# NearbyHomes - 查询 HuskHomes 里某个位置附近的家
+#
+# 插件直接读取 HuskHomes 的数据库，所以能看到私人家，不依赖游戏内权限。
+# 建议只在服务器低峰或关闭时查询。
+
+# 默认查询半径（格）
+default-radius: 100
+# 允许的最大半径
+max-radius: 500
+# 最多显示多少条
+max-results: 30
+
+# 数据库设置。type 为 auto 时自动读取 plugins/HuskHomes/config.yml。
+#
+# 手动配置时（type: mysql），字段含义：
+#   host     数据库主机，通常 127.0.0.1
+#   port     端口，MySQL 默认 3306
+#   name     HuskHomes 使用的数据库名
+#   username 账号名（不是密码！）
+#   password 密码（建议加引号，例如 '123456'）
+database:
+  # auto | sqlite | mysql | postgresql
+  type: auto
+  host: ''
+  port: 3306
+  name: ''
+  username: ''
+  password: ''
+  # 仅 sqlite 用：数据库文件（相对 HuskHomes 目录，或绝对路径）
+  file: ''
+  # 跨服模式下只看某个子服，留空表示不过滤
+  server: ''
+
+messages:
+  no-permission: '&c你没有权限使用这个命令。'
+  usage: '&e用法：/nearbyhomes [半径] [世界]'
+  bad-radius: '&c半径必须是 1 到 {max} 之间的数字。'
+  querying: '&7正在查询 {radius} 格内的家…'
+  empty: '&7{radius} 格内没有找到任何家。'
+  nearest: '&7最近的一个在 &e{distance} 格&7外：&f{home} &7({owner}) &8[{x}, {y}, {z}] &7{world}'
+  tip: '&7想查更远可以加半径，比如 &e/nearbyhomes 500'
+  header: '&6{radius} 格内找到 {count} 个家：'
+  line: '&e{distance} 格 &f{home} &7({owner}) &8[{x}, {y}, {z}] &7{world}{public}'
+  public-tag: ' &a[公开]'
+  failed: '&c查询失败：{error}'
+  access-denied: '&c数据库登录被拒绝：{error}&7。请检查 plugins/HuskHomes/config.yml 里的 database.credentials，或在 plugins/NearbyHomes/config.yml 里手动填写账号密码。'
+  worlds: '&7数据库里的世界：{worlds}'
