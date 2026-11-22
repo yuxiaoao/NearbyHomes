@@ -1,0 +1,16 @@
+name: NearbyHomes
+version: '1.0.0'
+main: net.starryisle.nearbyhomes.NearbyHomesPlugin
+api-version: '1.20'
+description: List HuskHomes homes within a radius of a player
+author: StarryIsle
+softdepend: [HuskHomes]
+commands:
+  nearbyhomes:
+    description: List HuskHomes homes near you
+    usage: /nearbyhomes [radius] [world]
+    aliases: [nh]
+permissions:
+  nearbyhomes.use:
+    description: Use /nearbyhomes
+    default: op
